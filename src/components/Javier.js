@@ -13,6 +13,15 @@ class Javier extends React.Component{
       { id:4, name: "Chicken Alfredo", ingridients:"Chicken, butter, pasta, alfredo sauce", time: "5"},
     ]
   }
+
+  addRecipe = (recipeData) => {
+    const recipe = {id:`Math.random()`, ...recipeData} //storing the new recipe here
+    const newRecipes = [recipe, ...this.state.recipes] //add the new recipe to our existing recipe state
+    this.setState({
+      recipes: newRecipes, //this set state will make the new recipe official
+    })
+    
+  }
   
   renderRecipes(){
     return this.state.recipes.map((recipe) => {
@@ -29,7 +38,7 @@ class Javier extends React.Component{
     return(
       <div>
         <Header as="h1">Javiers Secret Recipes</Header>
-        <JavierForm/>
+        <JavierForm addRecipe={this.addRecipe}/>
         {this.renderRecipes()}
       </div>
     )
