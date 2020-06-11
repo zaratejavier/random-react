@@ -17,7 +17,7 @@ class Shawn extends React.Component {
 
   renderTrails= () => {
     return this.state.trails.map ( trail => {
-      return <Trails key={trail.id} {...trail} />
+      return <Trails key={trail.id} {...trail} edit={this.editTrail} />
     })
   }
 
@@ -26,6 +26,18 @@ class Shawn extends React.Component {
     const newTrails = [newTrail, ...this.state.trails];
     this.setState({
       trails: newTrails,
+    })
+  }
+
+  editTrail = (trailSpecs) => {
+    const trails = this.state.trails.map ( t => {
+      if (trailSpecs.id === t.id) {
+        return trailSpecs;
+      }
+      return t; 
+    })
+    this.setState({
+      trails,
     })
   }
 

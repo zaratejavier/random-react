@@ -1,14 +1,18 @@
 import React from 'react';
 import { Button, Header, Card } from 'semantic-ui-react';
+import TrailForm from'./TrailForm';
 
 
 class Trails extends React.Component {
   state= {editing: false};
 
+  toggleEdit = () => this.setState ({ editing: !this.state.editing });
+
   render(){
     return(
       <>
-    <Card>
+      {this.state.editing ? (<TrailForm edit={this.props.edit} toggle={this.toggleEdit} {...this.props} />) : 
+    (<Card>
       <Card.Content>
         <Card.Header>{this.props.name}</Card.Header>
         <Card.Meta>{this.props.location}</Card.Meta>
@@ -20,7 +24,7 @@ class Trails extends React.Component {
       </Card.Content>
       <Card.Content extra>
         <div className='ui two buttons'>
-          <Button basic color='purple'>
+          <Button basic color='purple' onClick={this.toggleEdit}>
             Edit
           </Button>
           <Button basic color='red'>
@@ -28,7 +32,8 @@ class Trails extends React.Component {
           </Button>
         </div>
       </Card.Content>
-    </Card>
+    </Card>)
+  }
     </>
     )
   }

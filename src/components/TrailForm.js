@@ -5,11 +5,34 @@ import {Form} from 'semantic-ui-react';
 class TrailForm extends React.Component {
   state = { name: '', vert: '', miles:'', location:'', tech:'' }
 
+  componentDidMount () {
+    console.log('mounted')
+    if (this.props.id) {
+      this.setState({
+        name: this.props.name,
+        vert: this.props.vert,
+        miles: this.props.miles,
+        location: this.props.location,
+        tech: this.props.tech,
+      })
+    }
+  }
+
   handleSubmit = (e) => {
-    this.props.add(this.state);
+    console.log(e)
+    if (this.props.id) {
+      this.props.edit({id: this.props.id, ...this.state });
+      this.props.toggle();
+    } else {
+      this.props.add(this.state);
+    }
+    this.setState({
+      name: '', vert: '', miles:'', location:'', tech:''
+    });
   }
 
   handleChange = (e) => {
+
     this.setState({
       [e.target.name]: e.target.value
     })
