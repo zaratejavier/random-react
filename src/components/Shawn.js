@@ -1,6 +1,7 @@
 import React from 'react';
 import Trails from './Trails';
-import {Card} from 'semantic-ui-react';
+import { Card } from 'semantic-ui-react';
+import TrailForm from "./TrailForm";
 
 class Shawn extends React.Component { 
   state = {
@@ -20,10 +21,19 @@ class Shawn extends React.Component {
     })
   }
 
+  addTrail = (trailSpecs) => {
+    const newTrail = {id:`Math.random()`, ...trailSpecs };
+    const newTrails = [newTrail, ...this.state.trails];
+    this.setState({
+      trails: newTrails,
+    })
+  }
+
   render() {
     return(
       <>
       <h1>SLC Running Trails</h1>
+      <TrailForm add={this.addTrail} />
       <Card.Group itemsPerRow="3">
       {this.renderTrails()}
       </Card.Group>

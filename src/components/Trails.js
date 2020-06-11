@@ -20,11 +20,11 @@ class Trails extends React.Component {
       </Card.Content>
       <Card.Content extra>
         <div className='ui two buttons'>
-          <Button basic color='green'>
-            Approve
+          <Button basic color='purple'>
+            Edit
           </Button>
           <Button basic color='red'>
-            Decline
+            Delete
           </Button>
         </div>
       </Card.Content>
