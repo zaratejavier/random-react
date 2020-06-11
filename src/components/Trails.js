@@ -12,7 +12,7 @@ class Trails extends React.Component {
     return(
       <>
       {this.state.editing ? (<TrailForm edit={this.props.edit} toggle={this.toggleEdit} {...this.props} />) : 
-    (<Card>
+    (<Card key={this.props.id}>
       <Card.Content>
         <Card.Header>{this.props.name}</Card.Header>
         <Card.Meta>{this.props.location}</Card.Meta>
@@ -27,7 +27,7 @@ class Trails extends React.Component {
           <Button basic color='purple' onClick={this.toggleEdit}>
             Edit
           </Button>
-          <Button basic color='red'>
+          <Button basic color='red'onClick={this.props.delete}>
             Delete
           </Button>
         </div>

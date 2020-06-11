@@ -15,12 +15,6 @@ class Shawn extends React.Component {
     ]
   };
 
-  renderTrails= () => {
-    return this.state.trails.map ( trail => {
-      return <Trails key={trail.id} {...trail} edit={this.editTrail} />
-    })
-  }
-
   addTrail = (trailSpecs) => {
     const newTrail = {id:`Math.random()`, ...trailSpecs };
     const newTrails = [newTrail, ...this.state.trails];
@@ -29,7 +23,15 @@ class Shawn extends React.Component {
     })
   }
 
+  // deleteTrail = (trailSpecs) => {
+  //   const trails = this.state.trails.filter( t => trailSpecs.id === t.id) 
+  //   this.setState({ trails });
+  // }
+  
+
+
   editTrail = (trailSpecs) => {
+    console.log(trailSpecs)
     const trails = this.state.trails.map ( t => {
       if (trailSpecs.id === t.id) {
         return trailSpecs;
@@ -40,6 +42,13 @@ class Shawn extends React.Component {
       trails,
     })
   }
+
+  renderTrails= () => {
+    return this.state.trails.map ( trail => {
+      return <Trails key={trail.id} {...trail} edit={this.editTrail} delete={this.deleteTrail} />
+    })
+  }
+
 
   render() {
     return(
