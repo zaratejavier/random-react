@@ -32,6 +32,18 @@ class Javier extends React.Component{
     this.setState({recipes})
   }
   
+  // renderRecipes(){
+  //   return this.state.recipes.map((recipe) => {
+  //     return <JavierPost 
+  //     key={recipe.id}
+  //     name={recipe.name} 
+  //     ingridients={recipe.ingridients} 
+  //     time={recipe.time}
+  //     />
+  //   })
+  // }
+
+
   renderRecipes(){
     return this.state.recipes.map((recipe) => {
       return <JavierPost 
@@ -39,6 +51,9 @@ class Javier extends React.Component{
       name={recipe.name} 
       ingridients={recipe.ingridients} 
       time={recipe.time}
+       // need to add these
+       id={recipe.id}
+       edit={this.editRecipe}
       />
     })
   }
@@ -47,7 +62,7 @@ class Javier extends React.Component{
     return(
       <div>
         <Header as="h1">Javiers Secret Recipes</Header>
-        <JavierForm addRecipe={this.addRecipe}/>
+        <JavierForm add={this.addRecipe}/>
         {this.renderRecipes()}
       </div>
     )
