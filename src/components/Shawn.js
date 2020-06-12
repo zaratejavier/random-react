@@ -23,13 +23,11 @@ class Shawn extends React.Component {
     })
   }
 
-  // deleteTrail = (trailSpecs) => {
-  //   const trails = this.state.trails.filter( t => trailSpecs.id === t.id) 
-  //   this.setState({ trails });
-  // }
+  deleteTrail = (trailSpecs) => {
+    const trails = this.state.trails.filter( (t) => t.id !== trailSpecs) 
+    this.setState({ trails });
+  }
   
-
-
   editTrail = (trailSpecs) => {
     console.log(trailSpecs)
     const trails = this.state.trails.map ( t => {

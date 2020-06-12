@@ -19,7 +19,7 @@ class TrailForm extends React.Component {
   }
 
   handleSubmit = (e) => {
-    console.log(e)
+    console.log(this.props)
     if (this.props.id) {
       this.props.edit({id: this.props.id, ...this.state });
       this.props.toggle();
@@ -78,7 +78,7 @@ class TrailForm extends React.Component {
           onChange={this.handleChange}
           value={this.state.location}
         />
-        <Form.Button color="teal">Add Trail!</Form.Button>
+        <Form.Button color="teal">Add Trail!"</Form.Button>
       </Form.Group>
       </Form>
       </>
