@@ -27,7 +27,7 @@ class Trails extends React.Component {
           <Button basic color='purple' onClick={this.toggleEdit}>
             Edit
           </Button>
-          <Button basic color='red'onClick={this.props.delete}>
+          <Button basic color='red'onClick={() => this.props.delete(this.props.id)}>
             Delete
           </Button>
         </div>
