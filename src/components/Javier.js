@@ -20,7 +20,16 @@ class Javier extends React.Component{
     this.setState({
       recipes: newRecipes, //this set state will make the new recipe official
     })
-    
+  }
+
+  editRecipe = (recipeData) => {
+    const recipes = this.state.recipes.map(r => {
+      if(recipeData.id === r.id){
+        return recipeData
+      }
+      return r
+    })
+    this.setState({recipes})
   }
   
   renderRecipes(){

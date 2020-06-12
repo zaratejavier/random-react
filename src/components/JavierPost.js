@@ -54,7 +54,6 @@ render(){
         </Button>
         </Link>
       </div>
-    
     </Segment>
   )
 }

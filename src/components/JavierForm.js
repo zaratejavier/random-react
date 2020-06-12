@@ -1,12 +1,25 @@
 import React from "react"
-import {Form, FormInput} from "semantic-ui-react"
+import {Form} from "semantic-ui-react"
 
 class JavierForm extends React.Component{
   state = {name: "", ingridients: "", time:""}
 
-  handleSubmit = (event) => {
-    event.preventDefault(); //this will prevent the whole page from reloading
-    this.props.addRecipe(this.state); //will add the new info to the state
+  componentDidMount() {
+    // console.log("form mounted")
+    // console.log(this.props)
+    if(this.props)
+      this.setState({
+        name: this.props.name, ingridients: this.props.ingridients, time: this.props.time,})
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault(); //this will prevent the whole page from reloading
+    if (this.props.id){
+      this.props.edit({id: this.props.id, ...this.state})
+      this.props.toggleEdit()
+    }else{
+      this.props.addRecipe(this.state); //will add the new info to the state
+    }
     this.setState({name:"", ingridients:"", time:""}) //this will reset the state to blank after user enters recipe
   }
 
